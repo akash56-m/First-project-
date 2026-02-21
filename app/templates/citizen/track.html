@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Track Complaint</h2>
+<form method="post" class="row g-2 mb-4">
+  {{ form.hidden_tag() }}
+  <div class="col-md-4">{{ form.tracking_id(class='form-control text-uppercase', placeholder='MIBXXXXXXXX') }}</div>
+  <div class="col-md-2">{{ form.submit(class='btn btn-outline-primary w-100') }}</div>
+</form>
+{% if complaint %}
+<div class="card shadow-sm"><div class="card-body">
+  <p><strong>Tracking ID:</strong> {{ complaint.tracking_id }}</p>
+  <p><strong>Status:</strong> {{ complaint.status }}</p>
+  <p><strong>Department:</strong> {{ complaint.department.name }}</p>
+  <p><strong>Service:</strong> {{ complaint.service.name }}</p>
+  <p><strong>Submitted:</strong> {{ complaint.submitted_at.strftime('%Y-%m-%d %H:%M') }}</p>
+</div></div>
+{% endif %}
+{% endblock %}

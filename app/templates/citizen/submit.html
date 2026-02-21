@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Submit Anonymous Complaint</h2>
+<form method="post" enctype="multipart/form-data" class="card card-body shadow-sm">
+  {{ form.hidden_tag() }}
+  <div class="row g-3">
+    <div class="col-md-6">{{ form.department_id.label(class='form-label') }}{{ form.department_id(class='form-select', id='departmentSelect') }}</div>
+    <div class="col-md-6">{{ form.service_id.label(class='form-label') }}{{ form.service_id(class='form-select', id='serviceSelect') }}</div>
+    <div class="col-12">{{ form.description.label(class='form-label') }}{{ form.description(class='form-control', rows=5, placeholder='Describe the issue in detail...') }}</div>
+    <div class="col-12">{{ form.evidence.label(class='form-label') }}{{ form.evidence(class='form-control') }}</div>
+    <div class="col-12">{{ form.submit(class='btn btn-primary') }}</div>
+  </div>
+</form>
+{% endblock %}

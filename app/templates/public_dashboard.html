@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Public Transparency Dashboard</h2>
+<div class="row g-3 mb-4">
+  <div class="col-md-3"><div class="kpi-card blue"><h6>Total</h6><p id="totalCount">{{ metrics.total }}</p></div></div>
+  <div class="col-md-3"><div class="kpi-card yellow"><h6>Pending</h6><p id="pendingCount">{{ metrics.pending }}</p></div></div>
+  <div class="col-md-3"><div class="kpi-card green"><h6>Resolved</h6><p id="resolvedCount">{{ metrics.resolved }}</p></div></div>
+  <div class="col-md-3"><div class="kpi-card cyan"><h6>Avg Days</h6><p id="avgDays">{{ metrics.avg_days }}</p></div></div>
+</div>
+<div class="row g-4">
+  <div class="col-md-8"><canvas id="monthlyChart"></canvas></div>
+  <div class="col-md-4"><canvas id="statusChart"></canvas></div>
+</div>
+{% endblock %}

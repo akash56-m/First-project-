@@ -1,0 +1,10 @@
+body { font-family: 'Inter', sans-serif; background-color: #f5f7fb; }
+.hero { background: linear-gradient(120deg, #edf3ff, #f8fcff); }
+.kpi-card { border-radius: 14px; box-shadow: 0 10px 24px rgba(13, 32, 74, 0.08); padding: 1rem; transition: transform .2s ease; background: #fff; }
+.kpi-card:hover { transform: translateY(-4px); }
+.kpi-card h6 { color: #4f5d75; }
+.kpi-card p { font-size: 2rem; font-weight: 700; margin: 0; }
+.kpi-card.blue { border-left: 6px solid #1f6feb; }
+.kpi-card.yellow { border-left: 6px solid #f1b825; }
+.kpi-card.green { border-left: 6px solid #2ea043; }
+.kpi-card.cyan { border-left: 6px solid #159fbc; }
