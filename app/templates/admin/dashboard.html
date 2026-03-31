@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Control Center</h2>
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <form class="card card-body" method="post" action="{{ url_for('admin.create_department') }}">
+      <h6>Create Department</h6>
+      <input class="form-control mb-2" name="name" placeholder="Department name" required />
+      <textarea class="form-control mb-2" name="description" placeholder="Description"></textarea>
+      <button class="btn btn-primary btn-sm">Save</button>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <form class="card card-body" method="post" action="{{ url_for('admin.create_service') }}">
+      <h6>Create Service</h6>
+      <input class="form-control mb-2" name="name" placeholder="Service name" required />
+      <select class="form-select mb-2" name="department_id" required>
+        {% for dep in departments %}<option value="{{ dep.id }}">{{ dep.name }}</option>{% endfor %}
+      </select>
+      <button class="btn btn-primary btn-sm">Save</button>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <form class="card card-body" method="post" action="{{ url_for('admin.create_officer') }}">
+      <h6>Create Officer</h6>
+      <input class="form-control mb-2" name="username" placeholder="Username" required />
+      <input class="form-control mb-2" name="password" placeholder="Temporary password" required />
+      <select class="form-select mb-2" name="department_id" required>
+        {% for dep in departments %}<option value="{{ dep.id }}">{{ dep.name }}</option>{% endfor %}
+      </select>
+      <button class="btn btn-primary btn-sm">Save</button>
+    </form>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover align-middle">
+    <thead><tr><th>Tracking</th><th>Status</th><th>Department</th><th>Assign</th></tr></thead>
+    <tbody>
+      {% for c in complaints %}
+      <tr>
+        <td>{{ c.tracking_id }}</td>
+        <td>{{ c.status }}</td>
+        <td>{{ c.department.name }}</td>
+        <td>
+          <form method="post" action="{{ url_for('admin.assign_complaint', complaint_id=c.id) }}" class="d-flex gap-2">
+            <select class="form-select form-select-sm" name="officer_id">
+              {% for o in officers %}
+                {% if o.department_id == c.department_id %}<option value="{{ o.id }}">{{ o.username }}</option>{% endif %}
+              {% endfor %}
+            </select>
+            <button class="btn btn-sm btn-outline-primary">Assign</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<a href="{{ url_for('admin.audit_logs') }}" class="btn btn-outline-dark btn-sm">View Audit Logs</a>
+{% endblock %}

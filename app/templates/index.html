@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero p-5 rounded-4 mb-4">
+  <h1 class="display-6 fw-bold">Municipal Integrity & Bribe-Free Service Portal</h1>
+  <p class="lead">Report corruption anonymously. Promote transparency. Build trust.</p>
+  <div class="d-flex gap-2 flex-wrap">
+    <a class="btn btn-primary" href="{{ url_for('citizen.submit_complaint') }}">Submit Complaint</a>
+    <a class="btn btn-outline-primary" href="{{ url_for('citizen.track_complaint') }}">Track Complaint</a>
+  </div>
+  <p class="text-muted mt-3 mb-0">Secure • Anonymous • Transparent</p>
+</section>
+<div class="row g-3">
+  <div class="col-md-3"><div class="kpi-card blue"><h6>Total</h6><p>{{ metrics.total }}</p></div></div>
+  <div class="col-md-3"><div class="kpi-card yellow"><h6>Pending</h6><p>{{ metrics.pending }}</p></div></div>
+  <div class="col-md-3"><div class="kpi-card green"><h6>Resolved</h6><p>{{ metrics.resolved }}</p></div></div>
+  <div class="col-md-3"><div class="kpi-card cyan"><h6>Avg Days</h6><p>{{ metrics.avg_days }}</p></div></div>
+</div>
+{% endblock %}

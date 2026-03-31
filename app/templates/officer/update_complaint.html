@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Update Complaint {{ complaint.tracking_id }}</h2>
+<form method="post" class="card card-body shadow-sm">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">{{ form.status.label(class='form-label') }}{{ form.status(class='form-select') }}</div>
+  <div class="mb-3">{{ form.notes.label(class='form-label') }}{{ form.notes(class='form-control', rows=4) }}</div>
+  {{ form.submit(class='btn btn-primary') }}
+</form>
+{% endblock %}
